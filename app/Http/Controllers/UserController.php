@@ -17,7 +17,7 @@ class UserController extends Controller
  
      public function updateprofileimage(Request $request){
          $this->validate($request,[
-             'title'=>'required',
+            //  'title'=>'required',
              'userimage'=>'required|image|mimes:jpg,jpeg,png|max:10000',
          ]);
  
@@ -27,7 +27,7 @@ class UserController extends Controller
              Image::make($userimage)->resize(300,300)->save(public_path('user_images/'.$filename));
  
              $user=Auth::user();
-             $user->title=$request->title;
+            //  $user->title=$request->title;
              $user->userimage=$filename;
              $user->save();
          }
