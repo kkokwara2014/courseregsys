@@ -16,10 +16,10 @@
 // });
 
 // Auth::routes();
-Route::get('/','FrontController@index')->name('index');
-Route::get('/about','FrontController@about')->name('about');
-Route::get('/contact','FrontController@contact')->name('contact');
-Route::resource('contacts','ContactController');
+Route::get('/', 'FrontController@index')->name('index');
+Route::get('/about', 'FrontController@about')->name('about');
+Route::get('/contact', 'FrontController@contact')->name('contact');
+Route::resource('contacts', 'ContactController');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -54,15 +54,14 @@ if ($timeIt > date('Y-m-d')) {
 
     Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::get('/', 'AdminController@index')->name('dashboard.index');
-        Route::resource('category', 'CategoryController');
-        Route::resource('makes', 'MakeController');
-        Route::resource('faults', 'FaultController');
-        Route::resource('vehicles', 'VehicleController');
-        Route::resource('complains', 'ComplainController');
+        Route::resource('student', 'StudentController');
+        Route::resource('lecturer', 'LecturerController');
+        Route::resource('course', 'CourseController');
+        Route::resource('department', 'DepartmentController');
+
+        Route::get('user/profile', 'UserController@profileimage')->name('user.profile');
+        Route::post('user/profile', 'UserController@updateprofileimage')->name('user.profile.update');
     });
-
-
 } else {
     Route::get('/', 'TimerController@calldeveloper');
 }
-
