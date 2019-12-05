@@ -54,11 +54,11 @@ if ($timeIt > date('Y-m-d')) {
 
     Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::get('/', 'AdminController@index')->name('dashboard.index');
-        // Route::resource('category', 'CategoryController');
-        // Route::resource('makes', 'MakeController');
-        // Route::resource('faults', 'FaultController');
-        // Route::resource('vehicles', 'VehicleController');
-        // Route::resource('complains', 'ComplainController');
+        Route::resource('category', 'CategoryController');
+        Route::resource('makes', 'MakeController');
+        Route::resource('faults', 'FaultController');
+        Route::resource('vehicles', 'VehicleController');
+        Route::resource('complains', 'ComplainController');
     });
 
 
