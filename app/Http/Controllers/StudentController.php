@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
+
+use App\Department;
 
 class StudentController extends Controller
 {
@@ -13,7 +17,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+ 
+        $user = Auth::user();
+        $students = User::where('role_id', '3')->orderBy('created_at', 'desc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+
+        return view('admin.student.index', compact('user', 'students', 'departments'));
+
     }
 
     /**

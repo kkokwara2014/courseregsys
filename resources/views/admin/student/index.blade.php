@@ -27,9 +27,9 @@
             <span class="fa fa-plus"></span> Add Supervisor
         </button> --}}
 
-        @if (Auth::user()->role->id==4)
-        <a href="{{route('project.index')}}" class="btn btn-success">
-            <span class="fa fa-eye"></span> My Project
+        @if (Auth::user()->role->id==3)
+        <a href="{{route('course.index')}}" class="btn btn-success">
+            <span class="fa fa-eye"></span> My Course
         </a>
             
         @endif
@@ -58,7 +58,7 @@
                                             <th>View Details</th>
                                             <th>Status</th>
                                             @if (Auth::user()->role->id==1)
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
 
                                             @endif
 
@@ -78,7 +78,7 @@
                                         <tr>
                                             <td>{{$student->lastname}}</td>
                                             <td>{{$student->firstname}}</td>
-                                            <td>{{$student->identitynumber}}</td>
+                                            <td>{{$student->regnumber}}</td>
 
                                             <td>{{$student->email}}</td>
                                             <td>{{$student->phone}}</td>
@@ -86,15 +86,15 @@
                                                 <a href="{{ route('student.show',$student->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 @if ($student->isactive==1)
                                                 <span class="fa fa-check-circle fa-2x text-success"></span>
                                                 @else
                                                 <span class="fa fa-close fa-2x text-danger"></span>
                                                 @endif
 
-                                            </td>
-                                            @if (Auth::user()->role->id==1)
+                                            </td> --}}
+                                            {{-- @if (Auth::user()->role->id==1)
                                             <td>
                                                 @if ($student->isactive==1)
 
@@ -134,7 +134,7 @@
 
                                                 @endif
                                             </td>
-                                            @endif
+                                            @endif --}}
 
 
                                             
@@ -172,7 +172,7 @@
                                         <tr>
                                             <td>{{$student->lastname}}</td>
                                             <td>{{$student->firstname}}</td>
-                                            <td>{{$student->identitynumber}}</td>
+                                            <td>{{$student->regnumber}}</td>
 
                                             <td>{{$student->email}}</td>
                                             <td>{{$student->phone}}</td>
@@ -180,15 +180,15 @@
                                                 <a href="{{ route('student.show',$student->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 @if ($student->isactive==1)
                                                 <span class="fa fa-check-circle fa-2x text-success"></span>
                                                 @else
                                                 <span class="fa fa-close fa-2x text-danger"></span>
                                                 @endif
 
-                                            </td>
-                                            @if (Auth::user()->role->id==1)
+                                            </td> --}}
+                                            {{-- @if (Auth::user()->role->id==1)
 
                                             <td>
 
@@ -230,7 +230,7 @@
                                                 @endif
 
                                             </td>
-                                            @endif
+                                            @endif --}}
 
 
                                             <td style="text-align: center">
@@ -271,11 +271,11 @@
                                         <tr>
                                             <th>Surname</th>
                                             <th>First Name</th>
-                                            <th>Identity Number</th>
+                                            <th>Reg. Number</th>
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>View Details</th>
-                                            <th>Status</th>
+                                            {{-- <th>Status</th> --}}
 
                                             @if (Auth::user()->role->id==1)
                                             <th>Action</th>

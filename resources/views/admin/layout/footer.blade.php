@@ -204,6 +204,10 @@
 
 <!-- jQuery 3 -->
 <script src="{{asset('admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>
+
+<!-- DataTables -->
+<script src="{{asset('admin_assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin_assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('admin_assets/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- Select2 -->
@@ -239,6 +243,12 @@
 <!-- Page script -->
 <script>
   $(function () {
+
+    //DataTable
+    $('#example1').DataTable({
+        'sort':false,
+      })
+    
     //Initialize Select2 Elements
     $('.select2').select2()
 
