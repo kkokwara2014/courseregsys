@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
+use App\Department;
+use App\Semester;
+use Auth;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -13,7 +17,12 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $semesters=Semester::orderBy('name','asc')->get();
+        $departments=Department::orderBy('name','asc')->get();
+        $courses=Course::orderBy('created_at','desc')->get();
+
+        return view('admin.course.index',compact('courses','departments','semesters','user'));
     }
 
     /**
@@ -34,7 +43,18 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string',
+            'code' => 'required',
+            'creditload' => 'required',
+            'semester_id' => 'required',
+            'acadsession' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        Course::create($request->all());
+
+        return redirect(route('course.index'));
     }
 
     /**

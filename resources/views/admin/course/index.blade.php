@@ -30,7 +30,7 @@
                 </button>
 
                 {{-- <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
-                    Chapters
+                Chapters
                 </a> --}}
                 {{-- @endif --}}
 
@@ -40,7 +40,7 @@
                     <span class="fa fa-exchange"></span> Assign Project
                 </button>
                 <a href="{{route('project.allocated')}}" class="btn btn-success"><span class="fa fa-eye"></span>
-                    Allocated Projects</a>
+                Allocated Projects</a>
                 @endif
 
                 <br><br> --}}
@@ -61,43 +61,49 @@
                                             <th>Credit Load</th>
                                             <th>Semester</th>
                                             <th>Acad. Session</th>
-                                            <th>By</th>
-                                            <th>Details</th>
+                                            <th>Department</th>
+
                                             <th>Edit</th>
                                             <th>Delete</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($projects as $project)
-                                        @if ($project->user->id==Auth::user()->id||Auth::user()->role->id==1||Auth::user()->role->id==2)
+                                        @foreach ($courses as $course)
+                                        {{-- @if
+                                        ($course->user->id==Auth::user()->id||Auth::user()->role->id==1||Auth::user()->role->id==2) --}}
                                         <tr>
-                                            <td>{{$project->title}}</td>
-                                            <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
+                                            <td>{{$course->title}}</td>
+                                            <td>{{$course->code}}</td>
+                                            <td>{{$course->creditload}}</td>
+                                            <td>{{$course->semester->name}}</td>
+                                            <td>{{$course->acadsession}}</td>
+                                            <td>{{$course->department->name}}</td>
+                                            {{-- <td>{{$course->user->lastname.', '.$course->user->firstname.' - '.$course->user->identitynumber}} --}}
                                             </td>
                                             <td style="text-align: center">
-                                                <a href="{{ route('project.show',$project->id) }}"><span
+                                                <a href="{{ route('course.show',$course->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
 
                                             <td style="text-align: center">
-                                                @if ($project->user->id==Auth::user()->id)
-                                                <a href="{{ route('project.edit',$project->id) }}"><span
+                                                @if ($course->user->id==Auth::user()->id)
+                                                <a href="{{ route('course.edit',$course->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span>
                                                 </a>
                                                 @endif
                                             </td>
 
                                             <td style="text-align: center">
-                                                <form id="delete-form-{{$project->id}}" style="display: none"
-                                                    action="{{ route('project.destroy',$project->id) }}" method="post">
+                                                <form id="delete-form-{{$course->id}}" style="display: none"
+                                                    action="{{ route('course.destroy',$course->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{method_field('DELETE')}}
                                                 </form>
                                                 <a href="" onclick="
                                                             if (confirm('Are you sure you want to delete this?')) {
                                                                 event.preventDefault();
-                                                            document.getElementById('delete-form-{{$project->id}}').submit();
+                                                            document.getElementById('delete-form-{{$course->id}}').submit();
                                                             } else {
                                                                 event.preventDefault();
                                                             }
@@ -106,14 +112,18 @@
 
                                             </td>
                                         </tr>
-                                        @endif
+                                        {{-- @endif --}}
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Title</th>
-                                            <th>By</th>
-                                            <th>Details</th>
+                                            <th>Code</th>
+                                            <th>Credit Load</th>
+                                            <th>Semester</th>
+                                            <th>Acad. Session</th>
+                                            <th>Department</th>
+
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -121,7 +131,7 @@
                                 </table>
 
                                 @else
-                                <p class="alert alert-info">No Unallocated Projects yet!</p>
+                                <p class="alert alert-info">No courses added yet!</p>
                                 @endif
                             </div>
                             <!-- /.box-body -->
@@ -135,41 +145,56 @@
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
 
-                        <form action="{{ route('project.store') }}" method="post">
+                        <form action="{{ route('course.store') }}" method="post">
                             {{ csrf_field() }}
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Add Project</h4>
+                                    <h4 class="modal-title">Add Course</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="">Project Title <b style="color: red;">*</b></label>
-                                        <input type="text" class="form-control" name="title" placeholder="Project Title"
+                                        <label for="">Course Title <b style="color: red;">*</b></label>
+                                        <input type="text" class="form-control" name="title" placeholder="Course Title"
                                             autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Case Study</label>
-                                        <input type="text" class="form-control" name="casestudy"
-                                            placeholder="Project Case Study">
+                                        <label for="">Course code <b style="color: red;">*</b></label>
+                                        <input type="text" class="form-control" name="code" placeholder="Course code"
+                                            autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Year</label>
+                                        <label for="">Credit Load</label>
+                                        <input type="text" class="form-control" name="creditload"
+                                            placeholder="Credit Load">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Semester</label>
+                                        <select name="semester_id" class="form-control">
+                                            <option selected="disabled">Select Semester</option>
+                                            @foreach ($semesters as $semester)
+                                            <option value="{{$semester->id}}">{{$semester->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Acad. Seesion</label>
                                         <input type="text" class="form-control" id="datepicker" name="projyear"
-                                            placeholder="Project year">
+                                            placeholder="Course year">
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Level</label>
-                                        <select name="classlevel_id" class="form-control">
-                                            <option selected="disabled">Select Level</option>
-                                            @foreach ($classlevels as $classlevel)
-                                            <option value="{{$classlevel->id}}">{{$classlevel->levelname}}</option>
+                                        <label for="">Department</label>
+                                        <select name="department_id" class="form-control">
+                                            <option selected="disabled">Select Department</option>
+                                            @foreach ($departments as $department)
+                                            <option value="{{$department->id}}">{{$department->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
-                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                                    
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -185,61 +210,7 @@
 
                 <!-- /.modal -->
 
-                {{-- Data input modal area for project allocation --}}
-                <div class="modal fade" id="modal-default-assign">
-                    <div class="modal-dialog">
-
-                        <form action="{{ route('allocation.store') }}" method="post">
-                            {{ csrf_field() }}
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title"><span class="fa fa-exchange"></span> Assign Projects To
-                                        Supervisor</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="">Supervisor <b style="color: red;">*</b> </label>
-
-                                        <select name="supervisor_id" id="" class="form-control">
-                                            <option selected="disabled">Select Supervisor</option>
-                                            @foreach ($supervisors as $supervisor)
-                                            <option value="{{$supervisor->id}}">
-                                                {{$supervisor->title.' '.$supervisor->lastname.', '.$supervisor->firstname}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Project <b style="color: red;">*</b> </label>
-
-                                        <select class="form-control select2" multiple="multiple"
-                                            data-placeholder="Select Project" style="width: 100%;" name="project_id[]">
-
-                                            @foreach ($projforassign as $pfa)
-                                            <option value="{{$pfa->id}}">
-                                                {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Assign</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-
-                        </form>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
+               
 
             </section>
             <!-- /.Left col -->
@@ -253,4 +224,8 @@
         <!-- /.row (main row) -->
 
     </section>
-    <
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@endsection
