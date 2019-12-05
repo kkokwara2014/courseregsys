@@ -8,8 +8,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Supervisors
-            <small>All Supervisors</small>
+            Lecturers
+            <small>All Lecturers</small>
         </h1>
         {{-- <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,11 +24,11 @@
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
 
-                @if (Auth::user()->role->id==2)
+                {{-- @if (Auth::user()->role->id==1||Auth::user()->role->id==2) --}}
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                    <span class="fa fa-plus"></span> Add Supervisor
+                    <span class="fa fa-plus"></span> Add Lecturer
                 </button>
-                @endif
+                {{-- @endif --}}
                 <br>
 
                 <div class="row">
@@ -54,59 +54,59 @@
 
                                             <th>Edit</th>
 
-@if (Auth::user()->role->id==1)
-    
-<th>Delete</th>
-@endif
+                                            @if (Auth::user()->role->id==1)
+
+                                            <th>Delete</th>
+                                            @endif
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($supervisors as $supervisor)
-                                        @if((Auth::user()->id==$supervisor->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
+                                        @foreach ($lecturers as $lecturer)
+                                        @if((Auth::user()->id==$lecturer->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
 
                                         <tr>
 
-                                            <td>{{$supervisor->lastname}}</td>
-                                            <td>{{$supervisor->firstname}}</td>
-                                            <td>{{$supervisor->identitynumber}}</td>
+                                            <td>{{$lecturer->lastname}}</td>
+                                            <td>{{$lecturer->firstname}}</td>
+                                            <td>{{$lecturer->regnumber}}</td>
 
-                                            <td>{{$supervisor->email}}</td>
-                                            <td>{{$supervisor->phone}}</td>
+                                            <td>{{$lecturer->email}}</td>
+                                            <td>{{$lecturer->phone}}</td>
                                             <td style="text-align: center">
-                                                <a href="{{ route('supervisor.show',$supervisor->id) }}"><span
+                                                <a href="{{ route('lecturer.show',$lecturer->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
 
                                             <td style="text-align: center">
 
 
-                                                <a href="{{ route('supervisor.edit',$supervisor->id) }}"><span
+                                                <a href="{{ route('lecturer.edit',$lecturer->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span></a>
 
                                             </td>
 
-@if (Auth::user()->role->id==1)
-    
-<td style="text-align: center">
-    <form id="delete-form-{{$supervisor->id}}" style="display: none"
-        action="{{ route('supervisor.destroy',$supervisor->id) }}"
-        method="post">
-        {{ csrf_field() }}
-        {{method_field('DELETE')}}
-    </form>
-    <a href="" onclick="
+                                            @if (Auth::user()->role->id==1)
+
+                                            <td style="text-align: center">
+                                                <form id="delete-form-{{$lecturer->id}}" style="display: none"
+                                                    action="{{ route('lecturer.destroy',$lecturer->id) }}"
+                                                    method="post">
+                                                    {{ csrf_field() }}
+                                                    {{method_field('DELETE')}}
+                                                </form>
+                                                <a href="" onclick="
                     if (confirm('Are you sure you want to delete this?')) {
                         event.preventDefault();
-                    document.getElementById('delete-form-{{$supervisor->id}}').submit();
+                    document.getElementById('delete-form-{{$lecturer->id}}').submit();
                     } else {
                         event.preventDefault();
                     }
                 "><span class="fa fa-trash fa-2x text-danger"></span>
-    </a>
+                                                </a>
 
-</td>
-@endif
+                                            </td>
+                                            @endif
 
 
                                         </tr>
@@ -124,10 +124,10 @@
                                             <th>View Details</th>
                                             <th>Edit</th>
 
-@if (Auth::user()->role->id==1)
-    
-<th>Delete</th>
-@endif
+                                            @if (Auth::user()->role->id==1)
+
+                                            <th>Delete</th>
+                                            @endif
 
                                         </tr>
                                     </tfoot>
@@ -144,14 +144,14 @@
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
 
-                        <form action="{{ route('supervisor.store') }}" method="post">
+                        <form action="{{ route('lecturer.store') }}" method="post">
                             {{ csrf_field() }}
 
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title"><span class="fa fa-graduation-cap"></span> Add Supervisor
+                                    <h4 class="modal-title"><span class="fa fa-graduation-cap"></span> Add Lecturer
                                     </h4>
                                 </div>
                                 <div class="modal-body">
@@ -184,7 +184,7 @@
                                     <div class="form-group">
                                         <input id="othername" type="text"
                                             class="form-control{{ $errors->has('othername') ? ' is-invalid' : '' }}"
-                                            name="othername" value="{{ old('othername') }}" autofocus
+                                            name="othername" value="{{ old('othername') }}" required autofocus
                                             placeholder="Othername(s)">
 
                                         @if ($errors->has('othername'))
@@ -194,19 +194,42 @@
                                         @endif
 
                                     </div>
-                                    <div class="form-group">
-                                        <input id="identitynumber" type="text"
-                                            class="form-control{{ $errors->has('identitynumber') ? ' is-invalid' : '' }}"
-                                            name="identitynumber" value="{{ old('identitynumber') }}" required autofocus
-                                            placeholder="Staff Number e.g SS-755" maxlength="8">
 
-                                        @if ($errors->has('identitynumber'))
+                                    <div class="form-group">
+                                        <input id="regnumber" type="text"
+                                            class="form-control{{ $errors->has('regnumber') ? ' is-invalid' : '' }}"
+                                            name="regnumber" value="{{ old('regnumber') }}" required autofocus
+                                            placeholder="Staff Number e.g SS-7899" maxlength="8">
+
+                                        @if ($errors->has('regnumber'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('identitynumber') }}</strong>
+                                            <strong>{{ $errors->first('regnumber') }}</strong>
                                         </span>
                                         @endif
 
                                     </div>
+
+                                    <div class="form-group">
+                                        <select class="form-control @error('department_id') is-invalid @enderror"
+                                            name="department_id" value="{{ old('department_id') }}" id="department_id">
+
+                                            <option selected="disabled">Select Department</option>
+                                            @foreach ($departments as $department)
+                                            <option value="{{$department->id}}">
+                                                {{$department->name.' - '.$department->code}}
+                                            </option>
+                                            @endforeach
+
+                                        </select>
+
+                                        @if ($errors->has('department_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('department_id') }}</strong>
+                                        </span>
+                                        @endif
+
+                                    </div>
+
 
 
                                     <div class="form-group">
@@ -233,40 +256,7 @@
                                         </span>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <select name="gender"
-                                            class="form-control @error('gender') is-invalid @enderror">
-                                            <option selected="disabled">Select Gender</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
 
-                                        @if ($errors->has('gender'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('gender') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control @error('department_id') is-invalid @enderror"
-                                            name="department_id" value="{{ old('department_id') }}" id="department_id">
-
-                                            <option selected="disabled">Select Department</option>
-                                            @foreach ($departments as $department)
-                                            <option value="{{$department->id}}">
-                                                {{$department->name.' - '.$department->code}}
-                                            </option>
-                                            @endforeach
-
-                                        </select>
-
-                                        @if ($errors->has('department_id'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('department_id') }}</strong>
-                                        </span>
-                                        @endif
-
-                                    </div>
 
 
                                     <div class="form-group">
@@ -286,8 +276,8 @@
                                             name="password_confirmation" required placeholder="Repeat Password">
                                     </div>
 
-                                    <input type="hidden" name="role_id" value="3">
-                                    <input type="hidden" name="isactive" value="1">
+                                    <input type="hidden" name="role_id" value="2">
+                                    {{-- <input type="hidden" name="isactive" value="1"> --}}
 
                                 </div>
                                 <div class="modal-footer">

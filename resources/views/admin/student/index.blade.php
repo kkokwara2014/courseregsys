@@ -56,11 +56,8 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>View Details</th>
-                                            <th>Status</th>
-                                            @if (Auth::user()->role->id==1)
-                                            {{-- <th>Action</th> --}}
-
-                                            @endif
+                                            
+                                            
 
                                             <th>Edit</th>
 
@@ -277,10 +274,10 @@
                                             <th>View Details</th>
                                             {{-- <th>Status</th> --}}
 
-                                            @if (Auth::user()->role->id==1)
+                                            {{-- @if (Auth::user()->role->id==1)
                                             <th>Action</th>
 
-                                            @endif
+                                            @endif --}}
 
 
 

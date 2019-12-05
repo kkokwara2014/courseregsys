@@ -39,11 +39,11 @@
                                             class="img-responsive img-rounded" width="180" height="180">
 
                                         <p>
-                                            <h3>{{$student->title.' '.$student->lastname.' '.$student->firstname}}</h3>
+                                            <h3>{{$student->lastname.' '.$student->firstname}}</h3>
                                         </p>
                                         <hr>
-                                        <div>Matric. Number : {{$student->identitynumber}} </div>
-                                        <div>Gender : {{$student->gender}} </div>
+                                        <div>Matric. Number : {{$student->regnumber}} </div>
+                                        {{-- <div>Gender : {{$student->gender}} </div> --}}
                                         <div>Email : {{$student->email}} </div>
                                         <div>Phone : {{$student->phone}}</div>
                                         <div>Department :
@@ -65,15 +65,15 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3>Project Topic</h3>
+                                        <h3>Registered Courses</h3>
 
-                                        @forelse ($student_project as $studproj)
+                                        {{-- @forelse ($student_project as $studproj)
                                         <h4>{{$studproj->title}}</h4>
                                         @empty
                                         <p style="background-color: dodgerblue" class="badge badge-info"><strong>No
                                                 Project topic has been
                                                 registered yet!</strong></p>
-                                        @endforelse
+                                        @endforelse --}}
 
                                         {{-- <h4>Supervisor:
                                             @forelse ($project_supervisor as $projSup)
@@ -89,7 +89,7 @@
 
 
                                         <hr>
-                                        <h3>Chapters</h3>
+                                        {{-- <h3>Chapters</h3>
                                         <ul class="list-group">
 
                                             @forelse ($project_chapters as $chapt)
@@ -111,7 +111,7 @@
                                                     Chapter yet!</strong></p>
                                             @endforelse
 
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
 

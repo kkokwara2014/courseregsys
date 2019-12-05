@@ -55,7 +55,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = User::find($id);
+    
+        return view('admin.student.show', array('user' => Auth::user()), compact('student'));
     }
 
     /**

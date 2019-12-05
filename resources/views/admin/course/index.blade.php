@@ -8,8 +8,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Unallocated Projects
-            <small>All Unassigned Projects</small>
+            Course
+            <small>All Courses</small>
         </h1>
         {{-- <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -23,19 +23,19 @@
         <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
-                @if (Auth::user()->role->id==4)
+                {{-- @if (Auth::user()->role->id==4) --}}
 
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                    <span class="fa fa-plus"></span> Add Project
+                    <span class="fa fa-plus"></span> Add Course
                 </button>
 
-                <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
+                {{-- <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
                     Chapters
-                </a>
-                @endif
+                </a> --}}
+                {{-- @endif --}}
 
 
-                @if (Auth::user()->role->id==2)
+                {{-- @if (Auth::user()->role->id==2)
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default-assign">
                     <span class="fa fa-exchange"></span> Assign Project
                 </button>
@@ -43,7 +43,7 @@
                     Allocated Projects</a>
                 @endif
 
-                <br><br>
+                <br><br> --}}
 
                 <div class="row">
                     <div class="col-md-12">
@@ -51,12 +51,16 @@
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
-                                @if (count($projects)>0)
+                                @if (count($courses)>0)
 
                                 <table id="example1" class="table table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Title</th>
+                                            <th>Code</th>
+                                            <th>Credit Load</th>
+                                            <th>Semester</th>
+                                            <th>Acad. Session</th>
                                             <th>By</th>
                                             <th>Details</th>
                                             <th>Edit</th>
@@ -249,8 +253,4 @@
         <!-- /.row (main row) -->
 
     </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
-@endsection
+    <

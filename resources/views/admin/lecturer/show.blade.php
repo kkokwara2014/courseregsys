@@ -8,8 +8,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Supervisor Details
-            <small>Supervisor Information</small>
+            Lecturer Details
+            <small>Lecturer Information</small>
           </h1>
           {{-- <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,7 +24,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('supervisor.index') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('lecturer.index') }}" class="btn btn-primary btn-sm">
                 Back</a>
         </div>
         <br>
@@ -38,18 +38,18 @@
                                 <img style="display: block;
                                 margin-left: auto;
                                 margin-right: auto;
-                                width: 50%;" src="{{url('user_images',$supervisor->userimage)}}" alt=""
+                                width: 50%;" src="{{url('user_images',$lecturer->userimage)}}" alt=""
                                     class="img-responsive img-circle" width="180" height="180">
 
                                 <p>
-                                    <h3>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h3>
+                                    <h3>{{$lecturer->lastname.' '.$lecturer->firstname}}</h3>
                                 </p>
                                 <hr>
-                                <div>Staff Number : {{$supervisor->identitynumber}} </div>
-                                <div>Gender : {{$supervisor->gender}} </div>
-                                <div>Email : {{$supervisor->email}} </div>
-                                <div>Phone : {{$supervisor->phone}}</div>
-                                <div>Department : {{$supervisor->department->name.' - '.$supervisor->department->code}}
+                                <div>Staff Number : {{$lecturer->regnumber}} </div>
+                                {{-- <div>Gender : {{$lecturer->gender}} </div> --}}
+                                <div>Email : {{$lecturer->email}} </div>
+                                <div>Phone : {{$lecturer->phone}}</div>
+                                <div>Department : {{$lecturer->department->name.' - '.$lecturer->department->code}}
                                 </div>
                                 <hr>
                             </div>
@@ -68,18 +68,8 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                <h3>Allocated Projects</h3>
-                                <ul class="list-group">
-                                    @forelse ($supervisor_projects as $sup_proj)
-                                    {{-- <a href="{{route('chapter.show',$sup_proj->id)}}"> --}}
-                                        <li class="list-group-item">{{$sup_proj->project->title}}</li>
-                                    {{-- </a> --}}
-                                    @empty
-                                    <li class="list-group-item alert alert-warning"><strong>No Project has been
-                                            allocated to you!</strong>
-                                    </li>
-                                    @endforelse
-                                </ul>
+                                <h3>Allocated Courses</h3>
+                                
                             </div>
                         </div>
 

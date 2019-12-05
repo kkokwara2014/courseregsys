@@ -8,7 +8,7 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
           <div class="inner">
-          <h3>{{$allAllocatedProjects}}</h3>
+          <h3>0</h3>
   
             <p>Allocated Projects</p>
           </div>
@@ -22,7 +22,7 @@
         <!-- small box -->
         <div class="small-box bg-fuchsia">
           <div class="inner">
-          <h3>{{$allUnallocatedProjects}}</h3>
+          <h3>9</h3>
   
             <p>Unallocated Projects</p>
           </div>
@@ -37,7 +37,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
           <div class="inner">
-            <h3>{{$allStudents}}</h3>
+            <h3>2</h3>
   
             <p>Students</p>
           </div>
@@ -52,9 +52,9 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
           <div class="inner">
-            <h3>{{$allSupervisors}}</h3>
+            <h3>2</h3>
   
-            <p>Supervisors</p>
+            <p>Lecturers</p>
           </div>
           <div class="icon">
             <i class="fa fa-graduation-cap"></i>
@@ -66,7 +66,7 @@
         <!-- small box -->
         <div class="small-box bg-light-blue-active">
           <div class="inner">
-            <h3>{{$allProjectCoordinators}}</h3>
+            <h3>6</h3>
   
             <p>Project Coordinator</p>
           </div>
@@ -81,7 +81,7 @@
         <!-- small box -->
         <div class="small-box bg-maroon-active">
           <div class="inner">
-            <h3>{{$allAdmins}}</h3>
+            <h3>1</h3>
   
             <p>Admins</p>
           </div>

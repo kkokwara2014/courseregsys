@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
+use App\User;
 use Illuminate\Http\Request;
+
+use Auth;
+
 
 class LecturerController extends Controller
 {
@@ -13,7 +18,11 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $lecturers = User::where('role_id', '2')->orderBy('created_at','desc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+
+        return view('admin.lecturer.index', compact('user', 'lecturers', 'departments'));
     }
 
     /**
@@ -34,7 +43,34 @@ class LecturerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'lastname' => 'required|string',
+            'firstname' => 'required|string',
+            'regnumber' => 'required|string|unique:users',
+            'phone' => 'required|integer',
+            'department_id' => 'required',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+
+        ]);
+
+        $user = new User;
+        
+        $user->lastname = $request->lastname;
+        $user->firstname = $request->firstname;
+        $user->othername = $request->othername;
+        $user->regnumber = $request->regnumber;
+        $user->department_id = $request->department_id;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->role_id = $request->role_id;
+        
+
+        $user->save();
+
+        return back();
     }
 
     /**
@@ -45,7 +81,9 @@ class LecturerController extends Controller
      */
     public function show($id)
     {
-        //
+        $lecturer=User::find($id);
+        
+        return view('admin.lecturer.show',array('user'=>Auth::user()),compact('lecturer'));
     }
 
     /**
