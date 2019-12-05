@@ -401,6 +401,7 @@ class ComposerStaticInita34766bd4e05ebbc3995ee087fabeb57
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
         'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -410,6 +411,12 @@ class ComposerStaticInita34766bd4e05ebbc3995ee087fabeb57
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\CourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourseController.php',
+        'App\\Http\\Controllers\\DepartmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/DepartmentController.php',
+        'App\\Http\\Controllers\\FrontController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\TimerController' => __DIR__ . '/../..' . '/app/Http/Controllers/TimerController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
