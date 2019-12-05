@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Department;
 
 class AdminController extends Controller
 {
@@ -42,6 +43,18 @@ class AdminController extends Controller
     {
         //
     }
+
+    
+    public function admins()
+    {
+        $user = Auth::user();
+        $admins = User::where('role_id', '1')->orderBy('created_at', 'desc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+
+        return view('admin.admins.index', compact('user', 'admins', 'departments'));
+    }
+
+    
 
     /**
      * Display the specified resource.

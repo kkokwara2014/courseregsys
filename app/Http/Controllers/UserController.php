@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
+use Image;
+use Auth;
 
 class UserController extends Controller
 {

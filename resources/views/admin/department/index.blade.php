@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 <label for="">Code <b style="color: red;">*</b> </label>
                                 <input type="text" class="form-control" name="code"
-                                    placeholder="Department Code e.g ACC for Accountancy" autofocus>
+                                    placeholder="Department Code e.g CSC for Computer Science" autofocus>
                             </div>
 
                         </div>

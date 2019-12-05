@@ -61,6 +61,8 @@ if ($timeIt > date('Y-m-d')) {
 
         Route::get('user/profile', 'UserController@profileimage')->name('user.profile');
         Route::post('user/profile', 'UserController@updateprofileimage')->name('user.profile.update');
+
+        Route::get('/admins', 'AdminController@admins')->name('admin.admins');
     });
 } else {
     Route::get('/', 'TimerController@calldeveloper');
