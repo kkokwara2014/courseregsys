@@ -7,7 +7,7 @@
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
-    <section class="col-lg-9 connectedSortable">
+    <section class="col-lg-8 connectedSortable">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
             <span class="fa fa-plus"></span> Add Department
         </button>
