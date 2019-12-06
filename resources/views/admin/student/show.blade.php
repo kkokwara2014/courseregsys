@@ -49,6 +49,7 @@
                                         <div>Department :
                                             {{$student->department->name.' - '.$student->department->code}}
                                         </div>
+                                        
                                         <hr>
                                     </div>
 
@@ -114,7 +115,7 @@
                                             @endforelse
 
                                         </ul> --}}
-                                        Student ID: {{}}
+                                        Student ID: {{Request::segment(3)}}
                                     </div>
                                 </div>
 
