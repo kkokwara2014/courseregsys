@@ -67,6 +67,8 @@
                                     <div class="col-md-12">
                                         <h3>Registered Courses</h3>
 
+                                        
+
                                         {{-- @forelse ($student_project as $studproj)
                                         <h4>{{$studproj->title}}</h4>
                                         @empty
@@ -112,6 +114,7 @@
                                             @endforelse
 
                                         </ul> --}}
+                                        Student ID: {{}}
                                     </div>
                                 </div>
 
