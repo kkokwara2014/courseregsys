@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Department;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class LecturerController extends Controller
         $user = Auth::user();
         $lecturers = User::where('role_id', '2')->orderBy('created_at','desc')->get();
         $departments = Department::orderBy('name', 'asc')->get();
+
 
         return view('admin.lecturer.index', compact('user', 'lecturers', 'departments'));
     }
@@ -82,8 +84,9 @@ class LecturerController extends Controller
     public function show($id)
     {
         $lecturer=User::find($id);
+        $lecturercourses=Course::where('user_id',$id)->get();
         
-        return view('admin.lecturer.show',array('user'=>Auth::user()),compact('lecturer'));
+        return view('admin.lecturer.show',array('user'=>Auth::user()),compact('lecturer','lecturercourses'));
     }
 
     /**

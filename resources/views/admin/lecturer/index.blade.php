@@ -63,7 +63,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($lecturers as $lecturer)
-                                        @if((Auth::user()->id==$lecturer->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
+                                        {{-- @if((Auth::user()->id==$lecturer->id||Auth::user()->role->id==2||Auth::user()->role->id==1)) --}}
 
                                         <tr>
 
@@ -106,7 +106,7 @@
                                                 </a>
 
                                             </td>
-                                            @endif
+                                            {{-- @endif --}}
 
 
                                         </tr>
