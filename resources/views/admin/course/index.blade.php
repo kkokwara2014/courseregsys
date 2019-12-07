@@ -151,7 +151,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Add Course</h4>
+                                    <h4 class="modal-title"><span class="fa fa-file-text-o"></span> Add Course</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -180,8 +180,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Acad. Seesion</label>
-                                        <input type="text" class="form-control" id="datepicker" name="projyear"
-                                            placeholder="Course year">
+                                        <input type="text" class="form-control" id="datepicker" name="acadsession"
+                                            placeholder="Academic Session">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Department</label>
