@@ -81,17 +81,17 @@
                                             <td>{{$course->department->name}}</td>
                                             {{-- <td>{{$course->user->lastname.', '.$course->user->firstname.' - '.$course->user->identitynumber}} --}}
                                             </td>
-                                            <td style="text-align: center">
+                                            {{-- <td style="text-align: center">
                                                 <a href="{{ route('course.show',$course->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
-                                            </td>
+                                            </td> --}}
 
                                             <td style="text-align: center">
-                                                @if ($course->user->id==Auth::user()->id)
+                                                {{-- @if ($course->user->id==Auth::user()->id) --}}
                                                 <a href="{{ route('course.edit',$course->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span>
                                                 </a>
-                                                @endif
+                                                {{-- @endif --}}
                                             </td>
 
                                             <td style="text-align: center">
@@ -180,7 +180,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Acad. Seesion</label>
-                                        <input type="text" class="form-control" id="datepicker" name="acadsession"
+                                        <input type="text" class="form-control" id="datepickeryear" name="acadsession"
                                             placeholder="Academic Session">
                                     </div>
                                     <div class="form-group">

@@ -220,9 +220,11 @@
 <script src="{{asset('admin_assets/bower_components/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('admin_assets/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- bootstrap datepicker -->
-<script src="{{asset('admin_assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('admin_assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}">
+</script>
 <!-- bootstrap color picker -->
-<script src="{{asset('admin_assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
+<script src="{{asset('admin_assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}">
+</script>
 <!-- bootstrap time picker -->
 <script src="{{asset('admin_assets/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 <!-- SlimScroll -->
@@ -284,7 +286,16 @@
 
     //Date picker
     $('#datepicker').datepicker({
-      autoclose: true
+      autoclose: true,
+     
+    })
+
+    //Only picking year
+    $('#datepickeryear').datepicker({
+      autoclose: true,
+      format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
     })
 
     //iCheck for checkbox and radio inputs

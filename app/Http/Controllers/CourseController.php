@@ -76,7 +76,12 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $semesters=Semester::orderBy('name','asc')->get();
+        $departments=Department::orderBy('name','asc')->get();
+        $courses=Course::where('id',$id)->first();
+
+        return view('admin.course.edit',compact('courses','departments','semesters','user'));
     }
 
     /**
@@ -88,7 +93,26 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string',
+            'code' => 'required',
+            'creditload' => 'required',
+            'semester_id' => 'required',
+            'acadsession' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        $course = Course::find($id);
+        $course->title = $request->title;
+        $course->code = $request->code;
+        $course->creditload = $request->creditload;
+        $course->semester_id = $request->semester_id;
+        $course->acadsession = $request->acadsession;
+        $course->department_id = $request->department_id;
+
+        $course->save();
+
+        return redirect(route('course.index'));
     }
 
     /**
@@ -99,6 +123,7 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $courses = Course::where('id', $id)->delete();
+        return redirect()->back();
     }
 }
