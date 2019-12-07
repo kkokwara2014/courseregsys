@@ -29,7 +29,7 @@
                 <br><br>
 
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-7">
 
                         <div class="box">
                             <!-- /.box-header -->
@@ -53,7 +53,7 @@
                                             value="{{$courses->creditload}}">
                                     </div>
 
-                                    <div>
+                                    <div class="form-group">
                                         <label for="name">Semester</label>
                                         <select name="semester_id" class="form-control">
                                             <option selected="disabled">Select Semester</option>
@@ -71,10 +71,36 @@
                                         <input type="text" class="form-control" id="datepickeryear" name="acadsession"
                                             value="{{$courses->acadsession}}">
                                     </div>
-                                    
+                                    <div class="form-group">
+                                        <label for="name">Department</label>
+                                        <select name="department_id" class="form-control">
+                                            <option selected="disabled">Select Department</option>
+                                            @foreach ($departments as $department)
+
+                                            <option value="{{$department->id}}"
+                                                {{$department->id==$courses->department_id ? 'selected':''}}>
+                                                {{$department->name}}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Leceturer</label>
+                                        <select name="user_id" class="form-control">
+                                            <option selected="disabled">Select Lecturer</option>
+                                            @foreach ($departments as $department)
+
+                                            <option value="{{$department->id}}"
+                                                {{$department->id==$courses->department_id ? 'selected':''}}>
+                                                {{$department->name}}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <br>
                                     <button type="submit" class="btn btn-primary">Update</button>
-                                    <a href="{{ route('category.index') }}" class="btn btn-default">Cancel</a>
+                                    <a href="{{ route('course.index') }}" class="btn btn-default">Cancel</a>
 
                             </div>
                             </form>

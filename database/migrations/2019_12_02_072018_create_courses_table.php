@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->integer('semester_id');
             $table->string('acadsession');
             $table->integer('department_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

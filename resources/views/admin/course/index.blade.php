@@ -62,6 +62,7 @@
                                             <th>Semester</th>
                                             <th>Acad. Session</th>
                                             <th>Department</th>
+                                            <th>Taught By</th>
 
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -78,7 +79,8 @@
                                             <td>{{$course->creditload}}</td>
                                             <td>{{$course->semester->name}}</td>
                                             <td>{{$course->acadsession}}</td>
-                                            <td>{{$course->department->name}}</td>
+                                            <td>{{$course->department->code}}</td>
+                                            <td>{{$course->user->lastname.', '.$course->user->firstname}}</td>
                                             {{-- <td>{{$course->user->lastname.', '.$course->user->firstname.' - '.$course->user->identitynumber}} --}}
                                             </td>
                                             {{-- <td style="text-align: center">
@@ -123,6 +125,7 @@
                                             <th>Semester</th>
                                             <th>Acad. Session</th>
                                             <th>Department</th>
+                                            <th>Taught By</th>
 
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -189,6 +192,15 @@
                                             <option selected="disabled">Select Department</option>
                                             @foreach ($departments as $department)
                                             <option value="{{$department->id}}">{{$department->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Taught By</label>
+                                        <select name="user_id" class="form-control">
+                                            <option selected="disabled">Select Lecturer</option>
+                                            @foreach ($lecturers as $lecturer)
+                                            <option value="{{$lecturer->id}}">{{$lecturer->lastname.', '.$lecturer->firstname}}</option>
                                             @endforeach
                                         </select>
                                     </div>

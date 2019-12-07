@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Department;
 use App\Semester;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,9 @@ class CourseController extends Controller
         $semesters=Semester::orderBy('name','asc')->get();
         $departments=Department::orderBy('name','asc')->get();
         $courses=Course::orderBy('created_at','desc')->get();
+        $lecturers=User::where('role_id','2')->orderBy('lastname','asc')->get();
 
-        return view('admin.course.index',compact('courses','departments','semesters','user'));
+        return view('admin.course.index',compact('courses','departments','semesters','user','lecturers'));
     }
 
     /**
@@ -80,8 +82,9 @@ class CourseController extends Controller
         $semesters=Semester::orderBy('name','asc')->get();
         $departments=Department::orderBy('name','asc')->get();
         $courses=Course::where('id',$id)->first();
+        $lecturers=User::where('role_id','2')->orderBy('lastname','asc')->get();
 
-        return view('admin.course.edit',compact('courses','departments','semesters','user'));
+        return view('admin.course.edit',compact('courses','departments','semesters','user','lecturers'));
     }
 
     /**
@@ -109,6 +112,7 @@ class CourseController extends Controller
         $course->semester_id = $request->semester_id;
         $course->acadsession = $request->acadsession;
         $course->department_id = $request->department_id;
+        $course->user_id = $request->user_id;
 
         $course->save();
 
