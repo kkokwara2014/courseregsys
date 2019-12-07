@@ -85,14 +85,14 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">Leceturer</label>
+                                        <label for="name">Lecturer</label>
                                         <select name="user_id" class="form-control">
                                             <option selected="disabled">Select Lecturer</option>
-                                            @foreach ($departments as $department)
+                                            @foreach ($lecturers as $user)
 
-                                            <option value="{{$department->id}}"
-                                                {{$department->id==$courses->department_id ? 'selected':''}}>
-                                                {{$department->name}}</option>
+                                            <option value="{{$user->id}}"
+                                                {{$user->id==$courses->user_id ? 'selected':''}}>
+                                                {{$user->lastname.', '.$user->firstname}}</option>
 
                                             @endforeach
                                         </select>
