@@ -410,6 +410,7 @@ class ComposerStaticInita34766bd4e05ebbc3995ee087fabeb57
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
+        'App\\Course_reg' => __DIR__ . '/../..' . '/app/Course_reg.php',
         'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',

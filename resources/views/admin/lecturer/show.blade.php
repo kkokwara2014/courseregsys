@@ -78,8 +78,8 @@
 
                                         </li>
                                         @empty
-                                        <p style="background-color: dodgerblue" class="badge badge-info"><strong>No
-                                                Course yet!</strong></p>
+                                        <p style="background-color: crimson;" class="badge badge-info"><strong>No
+                                                Course assigned yet!</strong></p>
                                         @endforelse
                                     </ul>
 
