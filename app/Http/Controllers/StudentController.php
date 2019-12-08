@@ -59,8 +59,10 @@ class StudentController extends Controller
         $student = User::find($id);
 
         $courses=Course::orderBy('title','asc')->get();
+
+        $regcourses=User::find($id);
     
-        return view('admin.student.show', array('user' => Auth::user()), compact('student','courses'));
+        return view('admin.student.show', array('user' => Auth::user()), compact('student','courses','regcourses'));
     }
 
     /**

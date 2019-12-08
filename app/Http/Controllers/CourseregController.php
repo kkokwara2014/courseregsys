@@ -45,16 +45,13 @@ class CourseregController extends Controller
 
         //Multiple insert queries
         foreach ($course_ids as $course_id) {
-            Course_reg::create([
-                'user_id'    => $inputs['user_id'],
+            $courses[] = [
+                'user_id' => $request->user_id,
                 'course_id' => $course_id
-            ]);
-
-            $regcourses = Course_reg::find($course_id);
-            
-            $regcourses->save();
+            ];
         }
 
+        Course_reg::insert($courses);
 
 
         return redirect()->back();

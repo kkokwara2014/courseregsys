@@ -73,6 +73,16 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h3>Registered Courses</h3>
+                                    <ul class="list-group">
+                                        @forelse ($regcourses as $regcourse)
+                                        <li class="list-group-item">
+                                            {{$regcourse->course['title'].' - '.$regcourse->course['code']}}
+                                        </li>
+                                        @empty
+                                        <p style="background-color: crimson;" class="badge badge-info"><strong>No
+                                                Registered Courses yet!</strong></p>
+                                        @endforelse
+                                    </ul>
 
 
 
@@ -164,7 +174,7 @@
 
                             @foreach ($courses as $course)
                             <option value="{{$course->id}}">
-                                {{$course->title.' - '.$course->code}}
+                                {{$course->title.' - '.$course->code.' - CRLoad ='.$course->creditload}}
                             </option>
                             @endforeach
                         </select>
