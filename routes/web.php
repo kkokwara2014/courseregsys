@@ -58,6 +58,7 @@ if ($timeIt > date('Y-m-d')) {
         Route::resource('lecturer', 'LecturerController');
         Route::resource('course', 'CourseController');
         Route::resource('department', 'DepartmentController');
+        Route::resource('coursereg', 'CourseregController');
 
         Route::get('user/profile', 'UserController@profileimage')->name('user.profile');
         Route::post('user/profile', 'UserController@updateprofileimage')->name('user.profile.update');

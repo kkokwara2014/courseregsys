@@ -22,11 +22,13 @@
             <section class="col-lg-12 connectedSortable">
                 <div>
                     <a href="{{ route('student.index') }}" class="btn btn-primary btn-sm">
-                        Back</a> 
-                        <a href="#" class="btn btn-success btn-sm">
-                                Register Course</a>
+                        Back</a>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#modal-default-assign">
+                        <span class="fa fa-exchange"></span> Register Course
+                    </button>
                 </div>
-                
+
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -132,6 +134,56 @@
         </div>
 </div>
 
+{{-- Data input modal area for project allocation --}}
+<div class="modal fade" id="modal-default-assign">
+    <div class="modal-dialog">
+
+        <form action="{{ route('coursereg.store') }}" method="post">
+            {{ csrf_field() }}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span class="fa fa-exchange"></span> Course Registration</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Student's Info <b style="color: red;">*</b> </label>
+
+                        <input id="user_id" type="text"
+                            class="form-control" name="user_id"
+                            value="{{ Auth::user()->id }}" placeholder="{{Auth::user()->lastname.', '.Auth::user()->firstname.' - '.Auth::user()->regnumber}}" readonly>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label>Courses <b style="color: red;">*</b> </label>
+
+                        <select class="form-control select2" multiple="multiple" data-placeholder="Select Course"
+                            style="width: 100%;" name="course_id[]">
+
+                            @foreach ($courses as $course)
+                            <option value="{{$course->id}}">
+                                {{$course->title.' - '.$course->code}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+
+        </form>
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 </section>

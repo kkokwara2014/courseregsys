@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -56,8 +57,10 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = User::find($id);
+
+        $courses=Course::orderBy('title','asc')->get();
     
-        return view('admin.student.show', array('user' => Auth::user()), compact('student'));
+        return view('admin.student.show', array('user' => Auth::user()), compact('student','courses'));
     }
 
     /**
