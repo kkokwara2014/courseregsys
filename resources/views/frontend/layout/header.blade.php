@@ -36,7 +36,7 @@
             </ul>
           </div>
           <div class="float-right">
-            <a class="dn_btn" href="tel:+4400123654896">+440 012 3654 896</a>
+            <a class="dn_btn" href="tel:+2348036788890">+234803-678-8890</a>
             <a class="dn_btn" href="mailto:services@courseregsys.com">services@courseregsys.com</a>
           </div>
         </div>

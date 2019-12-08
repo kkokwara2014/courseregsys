@@ -27,13 +27,13 @@
             <span class="fa fa-plus"></span> Add Supervisor
         </button> --}}
 
-        @if (Auth::user()->role->id==3)
+        {{-- @if (Auth::user()->role->id==3)
         <a href="{{route('course.index')}}" class="btn btn-success">
-            <span class="fa fa-eye"></span> My Course
+            <span class="fa fa-eye"></span> Course
         </a>
             
-        @endif
-                <br><br>
+        @endif --}}
+                <br>
 
                 <div class="row">
                     <div class="col-md-12">

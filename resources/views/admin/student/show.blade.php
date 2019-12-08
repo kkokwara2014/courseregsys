@@ -77,7 +77,7 @@
                                     <ul class="list-group">
                                         @forelse ($regcourses as $regcourse)
                                         <li class="list-group-item">
-                                            {{$regcourse->course->title.' - '.$regcourse->course->code}}
+                                        {{$regcourse->course->title.' - '.$regcourse->course->code}} <span class="pull-right">{{$regcourse->course->semester->name.', '.$regcourse->course->acadsession}}</span>
                                         </li>
                                         @empty
                                         <p style="background-color: crimson;" class="badge badge-info"><strong>No
@@ -110,11 +110,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Student's Info <b style="color: red;">*</b> </label>
+                        
 
-                        <input id="user_id" type="text"
+                        <label for="">Course For : {{Auth::user()->lastname.', '.Auth::user()->firstname.' - '.Auth::user()->regnumber}}</label>
+                        <input type="hidden"
                             class="form-control" name="user_id"
-                            value="{{ Auth::user()->id }}" placeholder="{{Auth::user()->lastname.', '.Auth::user()->firstname.' - '.Auth::user()->regnumber}}" readonly>
+                            value="{{ Auth::user()->id }}">
                         
                     </div>
 
