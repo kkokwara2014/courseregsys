@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Course_reg;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -60,7 +61,8 @@ class StudentController extends Controller
 
         $courses=Course::orderBy('title','asc')->get();
 
-        $regcourses=User::find($id);
+        $regcourses=Course_reg::where('user_id',$id)->get();
+        // $regcourses=User::find($id)->coursereg;
     
         return view('admin.student.show', array('user' => Auth::user()), compact('student','courses','regcourses'));
     }
